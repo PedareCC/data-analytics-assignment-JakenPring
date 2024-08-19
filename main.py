@@ -46,6 +46,14 @@ total_2024 = new_df[trips_2024_heading].sum()
 print(f'Total number of travelers in 2019: {total_2019}')
 print(f'Total number of travelers in 2024: {total_2024}')
 
+# Top 5 countries
+top5_2019 = new_df.sort_values(trips_2019_heading, ascending=False)['Country'].head(5)
+top5_2024 = new_df.sort_values(trips_2024_heading, ascending=False)['Country'].head(5)
+
+# Print top 5 countries
+print(f"The most tourists in 2019 came from: \n{top5_2019}")
+print(f"The most tourists in 2024 came from: \n{top5_2024}")
+
 # Create a bar chart for tourism.csv
 plt.figure(figsize=(8, 6))
 plt.bar(['2019', '2024'], [total_2019, total_2024], color=['blue', 'orange'])
@@ -77,7 +85,7 @@ total_other_2024 = new_reason_df.loc[5, trips_2024_heading]
 
 # Create a bar chart for reasons_for_travel.csv in 2019
 plt.figure(figsize=(8, 6))
-plt.bar(['Holiday', 'Visiting', 'Business', 'Employment', 'Education', 'Other Reason'], [total_holiday_2019, total_visiting_2019, total_business_2019, total_employment_2019, total_education_2019, total_other_2019], color=['red','green','blue','yellow','purple','orange'])
+plt.bar(['Holiday', 'Visiting', 'Business', 'Employment', 'Education', 'Other'], [total_holiday_2019, total_visiting_2019, total_business_2019, total_employment_2019, total_education_2019, total_other_2019], color=['red','green','blue','yellow','purple','orangered'])
 plt.xlabel('Reason')
 plt.ylabel('Total number of travelers')
 # plt.ylim(6000, 8000)
@@ -88,7 +96,7 @@ plt.show()
 
 # Create a bar chart for reasons_for_travel.csv in 2019
 plt.figure(figsize=(8, 6))
-plt.bar(['Holiday', 'Visiting', 'Business', 'Employment', 'Education', 'Other Reason'], [total_holiday_2024, total_visiting_2024, total_business_2024, total_employment_2024, total_education_2024, total_other_2024], color=['red','green','blue','yellow','purple','orange'])
+plt.bar(['Holiday', 'Visiting', 'Business', 'Employment', 'Education', 'Other'], [total_holiday_2024, total_visiting_2024, total_business_2024, total_employment_2024, total_education_2024, total_other_2024], color=['lightcoral','palegreen','paleturquoise','palegoldenrod','violet','lightsalmon'])
 plt.xlabel('Reason')
 plt.ylabel('Total number of travelers')
 # plt.ylim(6000, 8000)
@@ -98,14 +106,14 @@ plt.savefig('Travelers_Reasons_2024.png')
 plt.show()
 
 # Create a bar chart for reasons_for_travel.csv comparing 2019 and 2024
-plt.figure(figsize=(8, 6))
-plt.bar(['Holiday 2019', 'Holiday 2024', 'Visiting', 'Business', 'Employment', 'Education', 'Other Reason'], [total_holiday_2024, total_visiting_2024, total_business_2024, total_employment_2024, total_education_2024, total_other_2024], color=['red','green','blue','yellow','purple','orange'])
+plt.figure(figsize=(22, 6))
+plt.bar(['Holiday 2019', 'Holiday 2024', 'Visiting 2019', 'Visiting 2024', 'Business 2019', 'Business 2024', 'Employment 2019', 'Employment 2024', 'Education 2019', 'Education 2024', 'Other 2019', 'Other 2024'], [total_holiday_2019, total_holiday_2024, total_visiting_2019, total_visiting_2024, total_business_2019, total_business_2024, total_employment_2019, total_employment_2024, total_education_2019, total_education_2024, total_other_2019, total_other_2024], color=['red','lightcoral','green','palegreen','blue','paleturquoise','goldenrod','palegoldenrod','purple','violet','orangered','lightsalmon'])
 plt.xlabel('Reason')
 plt.ylabel('Total number of travelers')
 # plt.ylim(6000, 8000)
-plt.title('Travel reasons in 2024')
+plt.title('Travel reasons in 2019 and 2024')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
-plt.savefig('Travelers_Reasons_2024.png')
+plt.savefig('Travelers_Reasons_Comparison.png')
 plt.show()
 
 # Find the total spending in 2019 and 2024
