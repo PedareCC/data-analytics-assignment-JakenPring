@@ -114,10 +114,13 @@ def optionThreeC():
     exitOption()
 
 def optionFour():
+    total_2019 = new_df[trips_2019_heading].sum()
+    total_2024 = new_df[trips_2024_heading].sum()
     holiday_percent_2019 = ((total_holiday_2019/total_2019)*100).round(2)
-    holiday_percent_2024 = ((total_holiday_2024/total_2019)*100).round(2)
+    holiday_percent_2024 = ((total_holiday_2024/total_2024)*100).round(2)
     print(f"In 2019, {holiday_percent_2019}% of tourists were here for a holiday.")
     print(f"In 2024, {holiday_percent_2024}% of tourists were here for a holiday.")
+    exitOption()
 
 # Menu System
 inMenuLoop = True
@@ -129,13 +132,14 @@ while inMenuLoop:
     print("2. Create a bar chart comparing 2019 and 2024")
     print("3. Create a bar chart of the reasons for travel")
     print("4. Percentage of tourists for reason")
+    print("5. Exit the program")
     chosenOption = input("Select your option: ").lower()
     if chosenOption == "1" or chosenOption == "one":
         optionOne()
     elif chosenOption == "2" or chosenOption == "two":
         optionTwo()
     elif chosenOption == "3" or chosenOption == "three":
-        option3year = input("Would you like to see 2019, 2024, or a comparison of both?").lower()
+        option3year = input("Would you like to see 2019, 2024, or a comparison of both? ").lower()
         if option3year == "2019" or option3year == "19":
             optionThreeA()
         elif option3year == "2024" or option3year == "24":
@@ -146,8 +150,8 @@ while inMenuLoop:
             print("Invalid option.")
     elif chosenOption == "4" or chosenOption == "four":
         optionFour()
-    elif chosenOption == "exit":
-        exitConfirm = input("Are you sure you want to close the program?: ").lower()
+    elif chosenOption == "5" or chosenOption == "five" or chosenOption == "exit":
+        exitConfirm = input("Are you sure you want to close the program? (y/n): ").lower()
         if exitConfirm == "y" or exitConfirm == "yes":
             inMenuLoop = False
         elif exitConfirm == "n" or exitConfirm == "no":
